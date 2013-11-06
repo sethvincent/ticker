@@ -17,7 +17,7 @@ var currtime =
     return +new Date
   }
 
-function ticker(element, rate, limit) {
+function ticker(rate, limit) {
   var fps = 1000 / (rate || 60)
     , emitter = new EventEmitter
     , last = currtime()
@@ -30,7 +30,7 @@ function ticker(element, rate, limit) {
   limit = arguments.length > 2 ? +limit + 1 : 2
 
   function loop() {
-    raf(loop, element || null)
+    raf(loop)
 
     var now = currtime()
     var dt = now - last
